@@ -1,25 +1,17 @@
 // pages/index.tsx
 import React from 'react';
-import Link from 'next/link';
+import Post from '../components/Post';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
+  // Example content, in a real app this would come from state or props.
+  const postContent = 'This is an example social media post!';
+
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
-      <aside className="w-1/5 bg-white p-5">
-        {/* ... Sidebar content ... */}
-      </aside>
-
-      {/* Main content */}
-      <main className="flex-1">
-        {/* ... Main content ... */}
-      </main>
-
-      {/* Right sidebar */}
-      <aside className="w-1/5 bg-white p-5">
-        {/* ... Right sidebar content ... */}
-      </aside>
-    </div>
+    <main>
+      <h1>Social Media App</h1>
+      <Post content={postContent} />
+      {/* Here you could map over an array of post contents */}
+    </main>
   );
 };
 
