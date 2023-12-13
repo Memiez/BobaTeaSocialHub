@@ -1,6 +1,5 @@
 import React from 'react';
 import { User } from '../interfaces/user';
-import styles from './Profile.module.css'; // Make sure to create this CSS module.
 
 interface ProfileProps {
   user: User;
@@ -8,10 +7,10 @@ interface ProfileProps {
 
 const Profile: React.FC<ProfileProps> = ({ user }) => {
   return (
-    <div className={styles.profile}>
-      <img src={user.avatarUrl} alt={`${user.name}'s avatar`} className={styles.avatar} />
-      <h1 className={styles.name}>{user.name}</h1>
-      <p className={styles.bio}>{user.bio}</p>
+    <div className="text-center p-4">
+      <img src={user.avatarUrl} alt={`${user.username}'s avatar`} className="w-24 h-24 rounded-full mx-auto" />
+      <h1 className="text-2xl font-semibold mt-2">{user.username}</h1>
+      <p className="text-gray-600">{user.bio}</p>
     </div>
   );
 };

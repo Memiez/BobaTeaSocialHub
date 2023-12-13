@@ -1,30 +1,15 @@
-import React, { useState } from 'react';
-import styles from './Post.module.css'; // Make sure to create this CSS module.
+import React from 'react';
 
 interface PostProps {
   content: string;
+  // Additional props like 'likes' if needed
 }
 
 const Post: React.FC<PostProps> = ({ content }) => {
-  const [likeCount, setLikeCount] = useState(0);
-
-  const toggleLike = () => {
-    // This will simply increment the like count for now
-    setLikeCount((count) => count + 1);
-  };
-
-  // These functions don't do anything yet, they're just placeholders
-  const comment = () => console.log('Comment');
-  const share = () => console.log('Share');
-
   return (
-    <div className={styles.post}>
-      <p>{content}</p>
-      <button onClick={toggleLike} className={styles.button}>
-        Like ({likeCount})
-      </button>
-      <button onClick={comment} className={styles.button}>Comment</button>
-      <button onClick={share} className={styles.button}>Share</button>
+    <div className="bg-white p-4 rounded-lg shadow">
+      <p className="text-gray-800">{content}</p>
+      {/* Interactive elements like like, comment, share buttons */}
     </div>
   );
 };

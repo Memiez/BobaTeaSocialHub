@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
-import styles from './PostCreation.module.css';
 
 const PostCreation: React.FC = () => {
   const [content, setContent] = useState('');
 
-  const handlePostCreation = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Here you would add the logic to call your API endpoint
-    console.log(content); // For now, we'll just log the content to the console
-    setContent('');
-  };
-
   return (
-    <form onSubmit={handlePostCreation}>
+    <div className="rounded-lg shadow-lg p-6 bg-white">
       <textarea
-        className={styles.textarea}
-        placeholder="What's on your mind?"
+        className="w-full border border-gray-300 rounded-lg p-4 mb-4"
+        placeholder="Share something..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        required
       />
-      <button className={styles.button} type="submit">
+      <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">
         Post
       </button>
-    </form>
+    </div>
   );
 };
 

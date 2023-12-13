@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styles from './CreatePost.module.css'; // This should match the file name exactly.
 
 const CreatePost: React.FC = () => {
   const [content, setContent] = useState('');
@@ -12,14 +11,16 @@ const CreatePost: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit} className="p-4">
       <textarea
-        className={styles.input}
+        className="border rounded-md w-full p-2"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="What's on your mind?"
       />
-      <button type="submit" className={styles.button}>Post</button>
+      <button type="submit" className="mt-2 bg-blue-500 text-white rounded-md px-4 py-2">
+        Post
+      </button>
     </form>
   );
 };

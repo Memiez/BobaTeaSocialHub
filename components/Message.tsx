@@ -1,18 +1,21 @@
 import React from 'react';
-import { Message } from '../interfaces/message';
-import styles from './Message.module.css'; // Make sure to create this CSS module.
 
 interface MessageProps {
-  message: Message;
+  sender: string;
+  text: string;
+  timestamp: Date; // Use a date object or a formatted string as needed
 }
 
-const MessageComponent: React.FC<MessageProps> = ({ message }) => {
+const Message: React.FC<MessageProps> = ({ sender, text, timestamp }) => {
   return (
-    <div className={styles.message}>
-      <p><strong>{message.sender}:</strong> {message.content}</p>
-      <span className={styles.timestamp}>{message.timestamp.toLocaleTimeString()}</span>
+    <div className="p-4 border-b last:border-b-0">
+      <div className="font-semibold">{sender}</div>
+      <p className="text-gray-700">{text}</p>
+      <div className="text-xs text-gray-500">
+        {timestamp.toLocaleTimeString()} {/* Format timestamp as needed */}
+      </div>
     </div>
   );
 };
 
-export default MessageComponent;
+export default Message;

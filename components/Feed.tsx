@@ -1,15 +1,16 @@
-import React from "react";
-import PostItem from "./PostItem";
-import styles from "./Feed.module.css"; // Correct path to your CSS module
+import React from 'react';
+import Post from './Post'; // Assume Post is a separate component
 
 const Feed: React.FC = () => {
-  // Assume posts is an array of post data
-  const posts = [];
+  const posts = [
+    { id: '1', content: 'Welcome to the social platform!', likes: 5 },
+    // More posts...
+  ];
 
   return (
-    <div className={styles.feed}>
+    <div className="space-y-4">
       {posts.map((post) => (
-        <PostItem key={post.id} post={post} />
+        <Post key={post.id} content={post.content} />
       ))}
     </div>
   );
