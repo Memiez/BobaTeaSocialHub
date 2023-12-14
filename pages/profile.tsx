@@ -7,7 +7,7 @@ const ProfilePage = () => {
           <div className="text-center p-6">
           <Image
             className="rounded-full shadow-lg"
-            src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Transparent-jack-russell-puppy-dog.png" // ใส่ลิงก์รูปภาพของคุณที่นี่
+            src="/img/Relaxed Santa Under Christmas Tree.jpeg"
             alt="Profile image"
             width={100}
             height={100}

@@ -16,7 +16,6 @@ const Profile: React.FC<ProfileProps> = ({ user }) => {
             </svg>
         </button>
 
-        5
         <div id="dropdown" className="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul className="py-2" aria-labelledby="dropdownButton">
             <li>
@@ -32,7 +31,7 @@ const Profile: React.FC<ProfileProps> = ({ user }) => {
         </div>
     </div>
     <div className="flex flex-col items-center pb-10">
-        <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Transparent-jack-russell-puppy-dog.png" alt="Bonnie image"/>
+        <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="\img\Relaxed Santa Under Christmas Tree.jpeg" alt="Bonnie image"/>
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
         <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
         <div className="flex mt-4 md:mt-6">

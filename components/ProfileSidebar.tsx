@@ -12,7 +12,6 @@ const ProfileSidebar: React.FC = () => {
             </svg>
         </button>
 
-        5
         <div id="dropdown" className="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul className="py-2" aria-labelledby="dropdownButton">
             <li>
