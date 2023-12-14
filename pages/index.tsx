@@ -1,22 +1,26 @@
+import Head from 'next/head';
 import React from 'react';
 import Navbar from '../components/Navbar';
 import ProfileSidebar from '../components/ProfileSidebar';
 import Feed from '../components/Feed';
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-100">
+      <Head>
+        <title>หน้าหลัก</title>
+        <meta name="description" content="หน้าหลักของเว็บไซต์" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Navbar />
-      <div className="container mx-auto grid grid-cols-12 gap-4 py-6">
-        <div className="col-span-3">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div className="md:col-span-1">
           <ProfileSidebar />
         </div>
-        <main className="col-span-6">
+        <main className="md:col-span-2">
           <Feed />
         </main>
-        <aside className="col-span-3">
-          {/* Additional sidebar content such as trends or recommendations */}
-        </aside>
       </div>
     </div>
   );
