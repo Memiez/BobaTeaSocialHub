@@ -25,3 +25,21 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+.scrollbar-w-2::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.scrollbar-track-blue-lighter::-webkit-scrollbar-track {
+  background-color: #f7fafc;
+}
+
+.scrollbar-thumb-blue::-webkit-scrollbar-thumb {
+  background-color: #edf2f7;
+}
+
+.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+}
