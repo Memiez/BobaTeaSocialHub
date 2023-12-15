@@ -31,7 +31,7 @@ const ProfilePage = () => {
             height={96}
           />
           <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-            Bonnie Green
+            Bonnie Tea
           </h5>
           <span className="text-sm text-gray-500 dark:text-gray-400">
             Visual Designer
