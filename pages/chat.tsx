@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import MessageInput from '../components/MessageInput';
+import { useState, useEffect, useRef } from 'react';
 
 interface IMessage {
   id: number;
@@ -7,45 +6,68 @@ interface IMessage {
   content: string;
 }
 
-const ChatPage: React.FC = () => {
-  const [messages, setMessages] = useState<IMessage[]>([]);
+export default function ChatPage() {
+  const [messages, setMessages] = useState<IMessage[]>([
+    // Dummy message for layout purposes
+    { id: 1, sender: 'Anderson Vanhron', content: 'I have no issue with any other packages installed with root permission globally.' },
+  ]);
   const [newMessage, setNewMessage] = useState('');
-  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+  const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
-  const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!newMessage.trim()) return;
-
-    const messageToSend: IMessage = {
-      id: messages.length + 1,
-      sender: 'User',
-      content: newMessage,
-    };
-
-    setMessages([...messages, messageToSend]);
-    setNewMessage('');
+  const handleNewMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewMessage(e.target.value);
   };
 
-  useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [messages]);
+  const handleSendMessage = () => {
+    if (newMessage.trim() === '') return;
+
+    const newId = messages.length + 1;
+    const newMessages = [...messages, { id: newId, sender: 'You', content: newMessage }];
+    setMessages(newMessages);
+    setNewMessage('');
+    scrollToBottom();
+  };
+
+  const scrollToBottom = () => {
+    endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(scrollToBottom, [messages]);
 
   return (
-    <div className="flex-1 p-2 sm:p-6 justify-between flex flex-col h-screen">
-      {/* Top bar and user info here */}
-      {/* Messages container */}
-      <div id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
-        {/* ... map over messages and render them ... */}
-        <div ref={messagesEndRef} />
+    <div className="flex flex-col h-screen">
+      <div className="flex-none">
+        {/* Top bar with user info and icons */}
       </div>
-      {/* Message input */}
-      <form onSubmit={handleSendMessage} className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
-        {/* ... message input field and send button ... */}
-      </form>
+      <div className="flex-grow overflow-auto">
+        {/* List of messages */}
+        {messages.map((message) => (
+          <div key={message.id} className="p-4 flex justify-end">
+            <div className="bg-blue-500 text-white rounded-lg p-2 max-w-xs">
+              {message.content}
+            </div>
+          </div>
+        ))}
+        <div ref={endOfMessagesRef} />
+      </div>
+      <div className="flex-none p-4">
+        <div className="flex rounded-lg border overflow-hidden">
+          <input
+            className="flex-grow p-2 text-lg border-none"
+            type="text"
+            placeholder="Write your message!"
+            value={newMessage}
+            onChange={handleNewMessageChange}
+            onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+          />
+          <button
+            className="bg-blue-500 text-white p-2"
+            onClick={handleSendMessage}
+          >
+            Send
+          </button>
+        </div>
+      </div>
     </div>
   );
-};
-
-export default ChatPage;
+}
