@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <img src="https://img5.pic.in.th/file/secure-sv1/DALL_E_2023-12-15_17.30.21_-_die-cut_sticker__digital_drawing__featuring_the_words__Boba_Tea__in_a_cute_and_beautiful_3D_font_style._The_sticker_has_a_solid_white_background__a_st-removebg-preview.png" alt="Logo" className="h-8 w-8 mr-2" />
-          <span className="text-xl font-bold text-gray-800">Boba Tea</span>
+          <span className="text-xl font-bold text-gray-800">BobaTea Lover</span>
         </div>
         <div className="flex items-center">
           <input
