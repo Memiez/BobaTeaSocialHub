@@ -1,6 +1,7 @@
-export interface Post {
-    id: string;
-    userId: string;
-    content: string;
-    createdAt: Date;
-  }
+export interface IPost {
+  id: number;
+  title: string;
+  imageUrl: string;
+  summary: string;
+  content: string;
+}

@@ -18,7 +18,8 @@ const Navbar: React.FC = () => {
           {/* Insert icons for additional actions */}
         </div>
         <div className="flex items-center space-x-4">
-          <a href="#" className="hover:text-gray-600">Home</a>
+          <a href="/" className="hover:text-gray-600">Home</a>
+          <a href="/profile" className="hover:text-gray-600">Profile</a>
           <a href="/chat" className="hover:text-gray-600">Messages</a>
           <a href="#" className="hover:text-gray-600">Notifications</a>
         </div>

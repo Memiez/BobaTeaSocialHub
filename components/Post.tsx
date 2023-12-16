@@ -1,16 +1,19 @@
 import React from 'react';
 
-interface PostProps {
+interface IPostProps {
   content: string;
-  // Additional props like 'likes' if needed
+  likes: number;
+  // You can add more properties here if needed
 }
 
-const Post: React.FC<PostProps> = ({ content }) => {
+const Post: React.FC<IPostProps> = ({ content, likes }) => {
   return (
-    <div className="bg-white p-4 rounded-lg shadow">
-      <p className="text-gray-800">{content}</p>
-      {/* Interactive elements like like, comment, share buttons */}
-    </div>
+    <article className="bg-white shadow rounded-lg p-4">
+      <div className="post-content" dangerouslySetInnerHTML={{ __html: content }} />
+      {/* Render other post information like likes */}
+      <div className="likes">{likes} Likes</div>
+      {/* Add buttons for like, comment, etc. */}
+    </article>
   );
 };
 

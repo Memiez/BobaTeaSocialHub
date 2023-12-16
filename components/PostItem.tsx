@@ -1,21 +1,18 @@
 import React from 'react';
+import { IPost } from '../interfaces/post';
 
-const PostItem: React.FC<{ post: any }> = ({ post }) => { // Replace 'any' with your actual Post type
+const PostItem: React.FC<{ post: IPost }> = ({ post }) => {
   return (
-    <article className="border rounded-lg p-4 bg-white shadow">
-      {/* Post content */}
-      <div>{post.content}</div>
-      {/* Like, comment, and share buttons */}
-      <div className="flex justify-between mt-2 text-gray-600">
-        <button className="flex items-center gap-1">
-          <span>Like</span>
-        </button>
-        <button className="flex items-center gap-1">
-          <span>Comment</span>
-        </button>
-        <button className="flex items-center gap-1">
-          <span>Share</span>
-        </button>
+    <article className="bg-white shadow-lg rounded-lg overflow-hidden my-5">
+      <img src={post.imageUrl} alt={post.title} className="w-full h-64 object-cover" />
+      <div className="p-6">
+        <h2 className="text-2xl font-bold mb-3">{post.title}</h2>
+        <p className="text-gray-700 mb-3">{post.summary}</p>
+        <div
+          className="post-content"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+        {/* You may have more UI elements here */}
       </div>
     </article>
   );

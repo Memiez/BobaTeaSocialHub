@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import React from 'react';
+import Navbar from '../components/Navbar';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+  return (
+    <>
+      <Navbar />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
-export default MyApp
+export default MyApp;
