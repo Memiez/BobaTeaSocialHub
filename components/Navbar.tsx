@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'
 
 const Navbar: React.FC = () => {
   return (
@@ -18,7 +19,7 @@ const Navbar: React.FC = () => {
         </div>
         <div className="flex items-center space-x-4">
           <a href="#" className="hover:text-gray-600">Home</a>
-          <a href="#" className="hover:text-gray-600">Messages</a>
+          <a href="/chat" className="hover:text-gray-600">Messages</a>
           <a href="#" className="hover:text-gray-600">Notifications</a>
         </div>
       </div>

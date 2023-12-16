@@ -21,7 +21,7 @@ const ChatPage = () => {
         {/* Profile and Chat Header */}
         <div className="flex items-center mb-4">
           <img
-            src="/path-to-your-image.jpg" // Replace with your image path
+            src="https://img2.pic.in.th/pic/DALLE-2023-12-16-15.17.12---A-cute-animated-style-sticker-design-featuring-a-bubble-tea-character.-The-bubble-tea-has-a-smiling-face-big-expressive-eyes-and-is-adorned-with-p.png" // Replace with your image path
             alt="User Avatar"
             className="h-12 w-12 rounded-full mr-4"
           />
