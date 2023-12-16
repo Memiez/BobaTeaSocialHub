@@ -1,4 +1,3 @@
-// components/ChatMessage.tsx
 import React from 'react';
 
 const ChatMessage = ({ text, isCurrentUser }: { text: string; isCurrentUser: boolean }) => {

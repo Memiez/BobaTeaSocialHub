@@ -1,51 +1,46 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import ChatMessage from '../components/ChatMessage';
 import MessageInput from '../components/MessageInput';
 
-interface IMessage {
-  id: number;
-  sender: string;
-  content: string;
-}
+const ChatPage = () => {
+  const [messages, setMessages] = useState<string[]>([
+    // Example messages
+    "เราไปลองร้านเปิดใหม่กันไหม",
+    "ได้สิ ไปกันเย็นนี้เลย",
+    "โกกกก !",
+    // ... more messages
+  ]);
 
-const ChatPage: React.FC = () => {
-  const [messages, setMessages] = useState<IMessage[]>([]);
-  const [newMessage, setNewMessage] = useState('');
-  const messagesEndRef = useRef<null | HTMLDivElement>(null);
-
-  const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!newMessage.trim()) return;
-
-    const messageToSend: IMessage = {
-      id: messages.length + 1,
-      sender: 'User',
-      content: newMessage,
-    };
-
-    setMessages([...messages, messageToSend]);
-    setNewMessage('');
+  const sendMessage = (newMessage: string) => {
+    setMessages([...messages, newMessage]);
   };
 
-  useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [messages]);
-
   return (
-    <div className="flex-1 p-2 sm:p-6 justify-between flex flex-col h-screen">
-      {/* Top bar and user info here */}
-      {/* Messages container */}
-      <div id="messages" className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
-        {/* ... map over messages and render them ... */}
-        <div ref={messagesEndRef} />
+    <div className="h-screen flex flex-col justify-between">
+      <div className="p-4">
+        {/* Profile and Chat Header */}
+        <div className="flex items-center mb-4">
+          <img
+            src="/path-to-your-image.jpg" // Replace with your image path
+            alt="User Avatar"
+            className="h-12 w-12 rounded-full mr-4"
+          />
+          <div>
+            <h1 className="text-xl font-semibold">น้องโบ๊ะบ๊ะ</h1>
+            <p className="text-gray-500">ยอดนักชิม</p>
+          </div>
+        </div>
+        {/* Chat Messages */}
+        <div className="overflow-y-auto">
+          {messages.map((msg, index) => (
+            <ChatMessage key={index} text={msg} isCurrentUser={index % 2 === 0} />
+          ))}
+        </div>
       </div>
-      {/* Message input */}
-      <form onSubmit={handleSendMessage} className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
-        {/* ... message input field and send button ... */}
-      </form>
+      {/* Chat Input */}
+      <MessageInput onSendMessage={sendMessage} />
     </div>
   );
-}
+};
 
 export default ChatPage;
