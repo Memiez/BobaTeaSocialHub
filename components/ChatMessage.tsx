@@ -1,17 +1,11 @@
+// components/ChatMessage.tsx
 import React from 'react';
 
-interface IMessageProps {
-  message: {
-    sender: string;
-    content: string;
-  };
-}
-
-const ChatMessage: React.FC<IMessageProps> = ({ message }) => {
+const ChatMessage = ({ text, isCurrentUser }: { text: string; isCurrentUser: boolean }) => {
+  const messageClass = isCurrentUser ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black';
   return (
-    <div className="p-2 bg-white rounded-md shadow">
-      <p className="font-bold">{message.sender}</p>
-      <p>{message.content}</p>
+    <div className={`max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl p-2 my-2 rounded ${messageClass}`}>
+      {text}
     </div>
   );
 };

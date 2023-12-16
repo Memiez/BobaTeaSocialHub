@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 
-interface IMessageInputProps {
-  onSendMessage: (message: string) => void;
-}
-
-const MessageInput: React.FC<IMessageInputProps> = ({ onSendMessage }) => {
+const MessageInput = ({ onSendMessage }: { onSendMessage: (message: string) => void }) => {
   const [message, setMessage] = useState('');
 
-  const handleSendMessage = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && message.trim()) {
+  const handleSend = () => {
+    if (message.trim()) {
       onSendMessage(message);
       setMessage('');
     }
   };
 
   return (
-    <div className="flex items-center justify-between w-full p-4">
+    <div className="flex items-center justify-between border-t-2 p-4">
       <input
         type="text"
+        placeholder="Write your message!"
+        className="flex-1 outline-none p-2 mr-4"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        onKeyDown={handleSendMessage}
-        placeholder="Type a message..."
-        className="focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3 flex-grow"
+        onKeyPress={(e) => e.key === 'Enter' && handleSend()}
       />
-      {/* Icons and Send button here */}
+      <button
+        onClick={handleSend}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+      >
+        Send
+      </button>
     </div>
   );
 };
